@@ -37,7 +37,7 @@ defaults
 frontend sanworld-frontend
         bind *:80
         mode http
-        http-request redirect scheme https code 301 unless { ssl_fc }
+        http-request redirect scheme https code 301 if !{ ssl_fc }
         http-request set-header X_Forwarded-Proto http
         default_backend sanworld-backend
 
