@@ -36,13 +36,12 @@ defaults
 
 frontend sanworld-frontend
         bind *:80
-        mode http
-        http-request redirect scheme https code 301 if !{ ssl_fc }
+        redirect scheme https code 301 if !{ ssl_fc }
         http-request set-header X_Forwarded-Proto http
         default_backend sanworld-backend
 
 frontend sanworld-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/www.sanworld.tech.pem
+        bind *:443 ssl crt /etc/letsencrypt/live/www.sanworld.tech/fullchain.pem
         http-request set-header X-Forwarded-Proto https
         default_backend sanworld-backend
 
