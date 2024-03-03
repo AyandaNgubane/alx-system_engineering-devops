@@ -34,18 +34,13 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 
 
-frontend sanworld-frontend
+frontend www
         bind *:80
-        redirect scheme https code 301 if !{ ssl_fc }
-        http-request set-header X_Forwarded-Proto http
-        default_backend sanworld-backend
+        bind :443 ssl crt /etc/haproxy/certs/sanworld.tech.pem
+    	http-request redirect scheme https unless { ssl_fc }
+        default_backend servers
 
-frontend sanworld-frontend-https
-        bind *:443 ssl crt /etc/letsencrypt/live/www.sanworld.tech/fullchain.pem
-        http-request set-header X-Forwarded-Proto https
-        default_backend sanworld-backend
-
-backend sanworld-backend
+backend servers
         balance roundrobin
-        server 483289-web-01 54.173.64.5:80 check
-        server 483289-web-02 100.24.244.188:80 check
+        server 483289-web-01 54.157.164.94:80 check
+        server 483289-web-02 35.175.128.186:80 check
