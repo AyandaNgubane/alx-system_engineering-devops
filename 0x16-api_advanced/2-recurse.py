@@ -21,7 +21,7 @@ def recurse(subreddit, hot_list=[], after=''):
                                                      subreddit=subreddit)
 
     # Set an User-Agent
-    user_agent = {'User-Agent': 'Python/requests'}
+    user_agent = {'User-Agent': 'Ayanda Ngubane'}
 
     # Set the Query Strings to Request
     payload = {'after': after, 'limit': '100'}

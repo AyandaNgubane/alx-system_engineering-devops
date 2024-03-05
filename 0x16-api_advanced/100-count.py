@@ -13,7 +13,7 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
                     "g": "GLOBAL",
                     "after": after,
                     "limit": 100},
-            headers={"User-Agent": "Andrew from Holberton"},
+            headers={"User-Agent": "Ayanda Ngubane"},
             allow_redirects=False)
     try:
         r.raise_for_status()
