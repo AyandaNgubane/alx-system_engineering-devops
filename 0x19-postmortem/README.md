@@ -1,18 +1,18 @@
 # Routine Maintenance Leads to Degraded Performance of Web and API Services
 
 ## 1. Issue summary
-On **May 9, 2023, from 1:00 PM to 2:30 PM EST**, users of our web and API services experienced slow response times and errors. The issue was caused by routine maintenance on server three, which hosts the master database for our API endpoints. During the maintenance, database writes were disabled, causing a bottleneck in the system that resulted in degraded performance. Approximately **62% of users were affected**, experiencing slow response times and intermittent errors when accessing our web and API services.
+On **Feb 22, 2024, from 1:00 PM to 2:30 PM GMT +2**, users of our web and API services experienced slow response times and errors. The issue was caused by routine maintenance on server three, which hosts the master database for our API endpoints. During the maintenance, database writes were disabled, causing a bottleneck in the system that resulted in degraded performance. Approximately **62% of users were affected**, experiencing slow response times and intermittent errors when accessing our web and API services.
 
 ![outage response](https://media.giphy.com/media/3o72EWQlRlJpMF5bQk/giphy.gif)
 
 ## 2. Timeline
-- 12:30 PM EAT: Maintenance begins on server three
-- 1:12 PM EAT: Monitoring agent on server two alerts the team to slow response times and errors.
-- 1:15 PM EAT: Investigation begins, starting with the web server and load balancer. Assumptions are made that the issue is related to network connectivity or load balancing.
-- 1:55 PM EAT: Investigation shifts to the API endpoints and database, and the root cause is identified as disabled database writes during maintenance.
-- 1:57 PM EAT: Incident is escalated to the database team.
-- 2:00 PM EAT: Database writes are re-enabled and performance begins to improve.
-- 2:30 PM EAT: Normal performance is restored, and incident is resolved.
+- 12:30 PM GMT +2: Maintenance begins on server three
+- 1:12 PM GMT +2: Monitoring agent on server two alerts the team to slow response times and errors.
+- 1:15 PM GMT +2: Investigation begins, starting with the web server and load balancer. Assumptions are made that the issue is related to network connectivity or load balancing.
+- 1:55 PM GMT +2: Investigation shifts to the API endpoints and database, and the root cause is identified as disabled database writes during maintenance.
+- 1:57 PM GMT +2: Incident is escalated to the database team.
+- 2:00 PM GMT +2: Database writes are re-enabled and performance begins to improve.
+- 2:30 PM GMT +2: Normal performance is restored, and incident is resolved.
 
 ## 3. Root cause analysis
 The root cause of the issue was that database writes were disabled during routine maintenance on server three. The databases was misconfigured as a slave. This caused a bottleneck in the system, as the web server was unable to create new records. As a result, users experienced slow response times and intermittent errors when accessing our web and API services.
