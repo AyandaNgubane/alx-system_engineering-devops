@@ -18,6 +18,7 @@ server {
         listen [::]:80 default_server;
 
         server_name _;
+        add_header X-Served-By 483289-web-01;
 
         location / {
                 include proxy_params;
